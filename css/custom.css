@@ -1,0 +1,10 @@
+
+table.posts thead tr th {
+	padding-right: 30px;
+	text-align: left;
+}
+
+table.posts tbody tr td {
+	padding-right: 30px;
+}
+

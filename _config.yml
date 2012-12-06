@@ -1,0 +1,9 @@
+# config options: https://github.com/mojombo/jekyll/wiki/Configuration
+
+pygments: true
+
+permalink: none
+
+# baseurl is required to make the site work locally (e.g. with file:///).
+# don't forget to prefix each URL with {{ site.baseurl }} .
+baseurl: .

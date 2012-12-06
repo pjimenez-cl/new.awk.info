@@ -1,0 +1,31 @@
+---
+layout: default
+title: Stub Web Site
+---
+
+<h1>Converted awk.info posts</h1>
+
+<table class="posts">
+<thead>
+<tr>
+	<th>Date</th>
+	<th>Title</th>
+	<th>Categories</th>
+	<th>Tags</th>
+</tr>
+</thead>
+<tbody>
+{% for post in site.posts %}
+<tr>
+	<td>{{ post.date | date_to_string }}</td>
+	<td><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></td>
+	<td>{{ post.categories | join: ', '}}</a></td>
+	<td>{{ post.tags | join: ', ' }}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<hr>
+
+Generated on {{ site.time | date_to_string }}

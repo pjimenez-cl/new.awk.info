@@ -1,0 +1,18 @@
+NOTES:
+
+Jekyll Introduction:
+ http://jekyllbootstrap.com/lessons/jekyll-introduction.html
+
+Jekyll Template Data (=variables available in templates):
+ https://github.com/mojombo/jekyll/wiki/Template-Data
+
+Liquid Template System (=commands usable in templates):
+ full docs: http://wiki.shopify.com/UsingLiquid
+ quick ref: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
+
+
+To re-build the static website, run 'jekyll' or 'make' .
+
+The main page will be ./_site/index.html .
+
+
