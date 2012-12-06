@@ -1,0 +1,298 @@
+
+<h1><join>Some Gawk (and PERL) Samples</join></h1>
+
+<p>by R. Loui
+
+<p>Here are a few short programs that do the same thing in each language. When reading these examples, the question to ask is `how many language features do I need to understand in order to understand the syntax of these examples'.</p>
+
+<p>Some of these are longer than they need to be since they don't exploit some (e.g.) command line trick to wrap the code in for each line do X. And that is the point- for teach-ability, the preferred language is the one you need to know LESS about before you can be useful in it.</p>
+
+<p><strong>hello world</strong></p>
+
+<p>PERL:</p>
+
+<pre> print "hello world\n"
+</pre>
+
+<p>GAWK:</p>
+
+<pre> BEGIN { print "hello world" }
+</pre>
+
+<p><strong>One plus one</strong></p>
+
+<p>PERL</p>
+
+<pre> $x= $x+1;
+</pre>
+
+<p>GAWK</p>
+
+<pre> x= x+1
+</pre>
+
+<p><strong>Printing</strong></p>
+
+<p>PERL</p>
+
+<pre> print $x, $y, $z;
+</pre>
+
+<p>GAWK</p>
+
+<pre> print x,y,z
+</pre>
+
+<p><strong>Printing the first field in a file</strong></p>
+
+<p>PERL</p>
+
+<pre> while (&lt;&gt;) { 
+   split(/ /);
+   print "@_[0]\n" 
+ }
+
+</pre>
+
+<p>GAWK</p>
+
+<pre> { print $1 }
+</pre>
+
+<p><strong>Printing lines, reversing fields</strong></p>
+
+<p>PERL</p>
+
+<pre> while (&lt;&gt;) { 
+  split(/ /);
+  print "@_[1] @_[0]\n" 
+ }
+</pre>
+
+<p>GAWK</p>
+
+<pre> { print $2, $1 }
+</pre>
+
+<p><strong>Concatenation of variables</strong></p>
+
+<p>PERL</p>
+
+<pre> command = "cat $fname1 $fname2 &gt; $fname3"
+</pre>
+
+<p>GAWK</p>
+
+<pre> command = "cat " fname1 " " fname2 " &gt; " fname3
+</pre>
+
+<p><strong>Looping</strong></p>
+
+<p>PERL:</p>
+
+<pre> for (1..10) { print $_,"\n" }
+</pre>
+
+<p>GAWK:</p>
+
+<pre> BEGIN { 
+  for (i=1; i&lt;=10; i++) print i
+ }
+</pre>
+
+<p><strong>Pairs of numbers</strong></p>
+
+<p>PERL:</p>
+
+<pre> for (1..10) { print "$_ ",$_-1 }
+ print "\n"
+</pre>
+
+<p>GAWK:</p>
+
+<pre> BEGIN { 
+  for (i=1; i&lt;=10; i++) printf i " " i-1
+  print ""
+ }
+</pre>
+
+<p><strong>List of words into a hash</strong></p>
+
+<p>PERL</p>
+
+<pre>  foreach $x ( split(/ /,"this is not stored linearly") ) 
+  { print "$x\n" }
+</pre>
+
+<p>GAWK</p>
+
+<pre> BEGIN { 
+  split("this is not stored linearly",temp)
+  for (i in temp) print temp[i]
+ }
+</pre>
+
+<p><strong>Printing a hash in some key order</strong></p>
+
+<p>PERL</p>
+
+<pre> $n = split(/ /,"this is not stored linearly");
+ for $i (0..$n-1) { print "$i @_[$i]\n" }
+ print "\n";
+ for $i (@_) { print ++$j," ",$i,"\n" }
+</pre>
+
+<p>AWK</p>
+
+<pre> BEGIN { 
+  n = split("this is not stored linearly",temp)
+  for (i=1; i&lt;=n; i++) print i, temp[i]
+  print ""
+  for (i in temp) print i, temp[i]
+ }
+</pre>
+
+<p><strong>Printing all lines in a file</strong></p>
+
+<p>PERL</p>
+
+<pre> open file,"/etc/passwd";
+ while (&lt;file&gt;) { print $_ }
+</pre>
+
+<p>GAWK</p>
+
+<pre>  BEGIN { 
+  while (getline &lt; "/etc/passwd") print
+ }
+</pre>
+
+<p><strong>Printing a string</strong></p>
+
+<p>PERL</p>
+
+<pre> $x = "this " . "that " . "\n";
+ print $x
+</pre>
+
+<p>GAWK</p>
+
+<pre> BEGIN {
+  x = "this " "that " "\n" ; printf x
+ }
+</pre>
+
+<p><strong>Building and printing an array</strong></p>
+
+<p>PERL</p>
+
+<pre> $assoc{"this"} = 4;
+ $assoc{"that"} = 4;
+ $assoc{"the other thing"} = 15;
+ for $i (keys %assoc) { print "$i $assoc{$i}\n" }
+</pre>
+
+<p>GAWK</p>
+
+<pre> BEGIN {
+   assoc["this"] = 4
+   assoc["that"] = 4
+   assoc["the other thing"] = 15
+   for (i in assoc) print i,assoc[i]
+ }
+</pre>
+
+<p><strong>Sorting an array</strong></p>
+
+<p>PERL</p>
+
+<pre> split(/ /,"this will be sorted once in an array");
+ foreach $i (sort @_) { print "$i\n" }
+</pre>
+
+<p>GAWK</p>
+
+<pre> BEGIN {
+  split("this will be sorted once in an array",temp," ")
+  for (i in temp) print temp[i] | "sort"
+  while ("sort" | getline) print
+ }
+</pre>
+
+<p><strong>Sorting an array (#2)</strong></p>
+
+<p>GAWK</p>
+
+<pre> BEGIN {
+  split("this will be sorted once in an array",temp," ")
+  n=asort(temp)
+  for (i=1;i&lt;=n;i++) print temp[i] 
+ }
+</pre>
+
+<p><strong>Print all lines, vowels changed to stars</strong></p>
+
+<p>PERL</p>
+
+<pre> while (&lt;STDIN&gt;) {
+  s/[aeiou]/*/g;
+  print $_
+ }
+
+</pre>
+
+<p>GAWK</p>
+
+<pre> {gsub(/[aeiou]/,"*"); print }
+</pre>
+
+<p><strong>Report from file</strong></p>
+
+<p>PERL</p>
+
+<pre> #!/pkg/gnu/bin/perl
+ # this is a comment
+ #
+ open(stream1,"w | ");
+ while ($line = &lt;stream1&gt;) {
+   ($user, $tty, $login, $junk) = split(/ +/, $line, 4);
+   print "$user $login ",substr($line,49)
+ }
+</pre>
+
+<p>GAWK</p>
+
+<pre>#!/pkg/gnu/bin/gawk -f
+ # this is a comment
+ #
+ BEGIN {
+   while ("w" | getline) {
+     user = $1; tty = $2; login = $3
+     print user, login, substr($0,49)
+   }
+ }
+</pre>
+
+<p><strong>Web Slurping</strong></p>
+
+<p>PERL</p>
+
+<pre> open(stream1,"lynx -dump 'cs.wustl.edu/~loui' | ");
+ while ($line = &lt;stream1&gt;) {
+   if ($flag &amp;&amp; $line =~ /[0-9]/) { print $line }
+   if ($line =~ /References/) { $flag = 1 }
+ }
+
+</pre>
+
+<p>GAWK</p>
+
+<pre> BEGIN {
+  com = "lynx -dump 'cs.wustl.edu/~loui' &amp;&gt; /dev/stdout"
+  while (com | getline line) {
+    if (flag &amp;&amp; line ~ /[0-9]/) { print line }
+    if (line ~ /References/) { flag = 1 }
+  }
+ }
+</pre>
+

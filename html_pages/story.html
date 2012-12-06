@@ -1,0 +1,380 @@
+<h1><join> Story.awk</join></h1>
+<h2>Contents</h2>
+<div id="htmltoc">
+<h2><font color=black>&bull;</font></a> <a href=#1>Synopsis</a></h2>
+<h2><font color=black>&bull;</font></a> <a href=#2>Download</a></h2>
+<h2><font color=black>&bull;</font></a> <a href=#3>Description</a></h2>
+<h2><font color=black>&bull;</font></a> <a href=#4>Options</a></h2>
+<h2><font color=black>&bull;</font></a> <a href=#5>Examples</a></h2>
+<h3><font color=black>&bull;</font></a> <a href=#6>A Short Example</a></h3>
+<h3><font color=black>&bull;</font></a> <a href=#7>A Longer Example</a></h3>
+<h3><font color=black>&bull;</font></a> <a href=#8>Biasing the Story</a></h3>
+<h2><font color=black>&bull;</font></a> <a href=#9>Code</a></h2>
+<h3><font color=black>&bull;</font></a> <a href=#10>Story.awk</a></h3>
+<h3><font color=black>&bull;</font></a> <a href=#11>Storyp.awk</a></h3>
+<h2><font color=black>&bull;</font></a> <a href=#12>Author</a></h2>
+</div><!--- htmltoc --->
+<div id="htmlbody">
+<a name=1></a><H2> Synopsis</H2>
+<PRE>
+echo Goal | gawk -f story.awk [ -v Grammar=FILE ] [ -v Seed=NUMBER ] 
+echo Goal | gawk -f storyp.awk [ -v Grammar=FILE ] [ -v Seed=NUMBER ] 
+</PRE>
+<a name=2></a><H2> Download</H2>
+<P>
+Download from
+<a href="http://lawker.googlecode.com/svn/fridge/lib/awk/grammar">LAWKER.</a>
+<a name=3></a><H2> Description</H2>
+<P>
+This code inputs a set of productions 
+and outputs a string of words that satisfy the production rules.
+<P>
+This page describes two versions of that system: 
+<a href="http://lawker.googlecode.com/svn/fridge/lib/awk/grammar/story.awk">story.awk</a>
+and
+<a href="http://lawker.googlecode.com/svn/fridge/lib/awk/grammar/storyp.awk">storyp.awk</a>.
+The former selects productions at random with equal probability. The latter
+allows the user to bias the selection by adding weights at the end  of line, after
+each production. 
+<a name=4></a><H2> Options</H2>
+<DL>
+<DT> -v Grammar=FILE</DT>
+<DD> Sets the FILE containing the productions. Defaults to "grammar".</DD>
+<DT> -v Seed=NUM</DT>
+<DD>
+ Sets the seed for the random number generator. Defaults to "1". 
+A useful idiom for generating random text is to use <em> Seed=$RANDOM</em>
+</DL>
+<a name=5></a><H2> Examples</H2>
+<a name=6></a><H3> A Short Example</H3>
+<P>
+ This grammar..
+<pre>
+Sentence -> Nounphrase Verbphrase   
+Nounphrase -> the boy              
+Nounphrase -> the girl           
+Verbphrase -> Verb Modlist Adverb 
+Verb -> runs                    
+Verb -> walks                  
+Modlist ->                    
+Modlist -> very Modlist      
+Adverb -> quickly           
+Adverb -> slowly           
+</pre>
+ ... and this input ...
+<pre>
+for i in 1 2 3 4 5 6 7 8 9 10;do
+	echo Sentence | 
+	gawk -f ../story.awk -v Grammar=english.rules -v Seed=$i | 
+	fmt
+done
+</pre>
+ ... generates these sentences:
+<pre>
+the boy runs very slowly
+the girl runs slowly
+the boy runs very slowly
+the girl walks very very quickly
+the boy runs quickly
+the girl walks very very slowly
+the boy walks very very very very very very quickly
+the boy walks very quickly
+the girl runs slowly
+the girl runs very quickly
+</pre>
+<a name=7></a><H3> A Longer Example</H3>
+<P> Here is <a href="http://www.gahanwilson.com/moviegen11.htm">Gahan Wilson</a>'s sci-fi plot generator ...</P>
+<center>
+<a href="http://lawker.googlecode.com/svn/fridge/share/img/movie_generator.gif">
+<img border=1 width=500 src="http://lawker.googlecode.com/svn/fridge/share/img/movie_generator.gif">
+</a>
+</center>
+<P>
+Using the above, we can generate the following stories:
+<pre>
+
+ Earth scientists invent giant bugs who want Our Women,  And Take
+ A Few And Leave
+
+ Earth is Attacked By tiny lunar superbeings who  Under Stand and
+ Are Not radioactive and can not be killed by the Navy but They Die
+ From Catching A Cold
+
+ Earth scientists invent enormous bugs who are Friendly and and
+ They Get Married And Live Happily Forever After
+
+ Earth is Struck By A Giant cloud and Magically Saved
+
+ Earth scientists invent giant bugs who  Under Stand and Are Not
+ radioactive and can not be killed by the Air Force so They Kill
+ Us
+
+ Earth is Attacked By enormous extra Galactic blobs who  Under Stand
+ and Are Not radioactive and can be killed by the Air Force
+
+ Earth scientists discover enormous blobs who  Under Stand and Are
+ Not radioactive and can be killed by a Crowd Of Peasants
+
+ Earth falls Into Sun and  Some  Resuced
+
+ Earth is Struck By A Giant comet but Is Saved
+
+ Earth is Struck By A Giant comet and Is Destroyed
+</pre>
+<P>
+This is generated from the following code:
+<pre>
+for i in 1 2 3 4 5 6 7 8 9 10;do
+	echo
+	echo Start | 
+	gawk -f ../story.awk -v Grammar=scifi.rules -v Seed=$i | 
+	fmt
+done
+</pre>
+<P> running on the following grammar:</P>
+<pre>
+Start      -> Earth IsStressed
+IsStressed -> Catestrophes 
+IsStressed -> Science 
+IsStressed -> Attack 
+IsStressed -> Collision
+
+Catestrophes -> Catestrophe and PossibleMegaDeath
+
+Catestrophe -> burnsUp 
+Catestrophe -> freezes
+Catestrophe -> fallsIntoSun
+
+Collision -> isStruckByAGiant Floater AndThen
+
+Floater -> comet
+Floater -> asteroid
+Floater -> cloud
+
+AndThen -> butIsSaved
+AndThen -> andIsDestroyed
+AndThen -> andMagicallySaved
+
+
+PossibleMegaDeath -> everybodyDies
+PossibleMegaDeath -> Some GoOn 
+
+SomeSaved ->  somePeople
+SomeSaved ->  everybody
+SomeSaved ->  almostEverybody
+  
+GoOn -> dies
+GoOn -> Resuced
+GoOn -> Saved
+ 
+Rescued -> isRescuedBy Sizes Extraterestrial Beings
+Saved   -> butIsSavedBy SomeOne scientists the  Science
+
+SomeOne -> earth
+SomeOne -> extraterestrial
+
+Science -> scientists DoSomething Sizes Beings Whichetc
+
+DoSomething -> invent
+DoSomething -> discover
+
+Attack -> isAttackedBy Sizes Extraterestrial Beings Whichetc
+
+Sizes -> tiny 
+Sizes -> giant 
+Sizes -> enormous
+ 
+Extraterestrial -> martian
+Extraterestrial -> lunar
+Extraterestrial -> extraGalactic
+
+Beings -> bugs
+Beings -> reptiles
+Beings -> blobs
+Beings -> superbeings
+
+Whichetc -> who WantSomething
+
+WantSomething -> WantWomen
+WantSomething -> areFriendly  and DenoumentOrHappyEnding
+WantSomething -> UnderStand ButEtc
+
+Understand -> areFriendly butMisunderstood
+Understand -> misunderstandUs
+Understand -> understandUsAllTooWell
+Understand -> hungry
+
+DenoumentOrHappyEnding -> Denoument
+DenoumentOrHappyEnding -> HappyEnding
+ 
+Dine -> Hungry and eat us Denoument?
+
+WhichEtc -> 
+Hungry -> lookUponUsAsASourceOfNourishment
+
+WantWomen -> wantOurWomen, AndTakeAFewAndLeave
+
+ButEtc -> AndAre radioactive and TryToKill
+
+AndAre -> andAre
+AndAre -> andAreNot
+
+Killers -> Killer 
+Killers -> Killer and Killer
+
+Killer -> aCrowdOfPeasants
+Killer -> theArmy
+Killer -> theNavy
+Killer -> theAirForce
+Killer -> theMarines
+Killer -> theCoastGuard
+Killer -> theAtomBomb
+
+TryToKill -> can be killed by Killers
+TryToKill -> can not be killed by Killers SoEtc
+
+SoEtc -> butTheyDieFromCatchingACold
+SoEtc -> soTheyKillUs
+SoEtc -> soTheyPutUsUnderABenignDictatorShip
+SoEtc -> soTheyEatUs
+SoEtc -> soScientistsInventAWeapon Which
+SeEtc -> but Denoument
+
+Which -> whichTurnsThemIntoDisgustingLumps
+Which -> whichKillsThem
+Which -> whichFails SoEtc
+
+Denomument? ->  
+Denomument? -> Denoument  
+
+Denoument ->  aCuteLittleKidConvincesThemPeopleAreOk Ending
+Denoument -> aPriestTalksToThemOfGod Ending
+Denoument -> theyFallInLoveWithThisBeautifulGirl EndSadOrHappy
+
+EndSadOrHappy -> Ending
+EndSadOrHappy -> HappyEnding
+
+Ending -> andTheyDie
+Ending -> andTheyLeave
+Ending -> andTheyTurnIntoDisgustingLumps
+
+HappyEnding -> andTheyGetMarriedAndLiveHappilyForeverAfter
+</pre>
+<a name=8></a><H3> Biasing the Story</H3>
+<P>
+Here is a grammar suitable for storyp.awk. Note that number at end of line that biases how often a
+production is selected. For example, "runs" and "slowly" are nine times more likely than other Verbs
+ and Adverbs.
+<pre>
+Sentence -> Nounphrase Verbphrase   1
+Nounphrase -> the boy               0.75
+Nounphrase -> the girl              0.25
+Verbphrase -> Verb Modlist Adverb   1
+Verb -> runs                        0.9
+Verb -> walks                       0.1
+Modlist ->                          0.5
+Modlist -> very Modlist             0.5
+Adverb -> quickly                   0.1
+Adverb -> slowly                    0.9
+</pre>
+The following code executes the biases story generation:
+<pre>
+for((i=1;i&lt;=10;i++)); do echo Sentence ;  done |
+gawk -f ../storyp.awk -v Grammar=englishp.rules 
+</pre>
+<P>
+This produces the following output. Note that, usually, we run slowly.
+<pre>
+the boy runs very slowly 
+the boy runs slowly 
+the girl runs very slowly 
+the boy runs slowly 
+the boy runs slowly 
+the girl walks very slowly 
+the boy walks slowly 
+the girl runs slowly 
+the boy runs slowly 
+the boy runs slowly 
+</pre>
+<a name=9></a><H2> Code</H2>
+<a name=10></a><H3> Story.awk</H3>
+<PRE>
+BEGIN { 
+    srand(Seed ? Seed : 1) 
+	Grammar = Grammar ? Grammar : "grammar"
+	while (getline &lt; Grammar > 0)
+	    if ($2 == "->") {
+		    i = ++lhs[$1]              # count lhs
+		    rhscnt[$1, i] = NF-2       # how many in rhs
+		    for (j = 3; j &lt;= NF; j++)  # record them
+		        rhslist[$1, i, j-2] = $j
+	    } else
+		     if ($0 !~ /^[ \t]*$/)
+        	    print "illegal production: " $0
+}
+{   if ($1 in lhs) {  # nonterminal to expand
+        gen($1)
+        printf("\n")
+    } else 
+        print "unknown nonterminal: " $0   
+}
+function gen(sym,    i, j) {
+    if (sym in lhs) {       # a nonterminal
+        i = int(lhs[sym] * rand()) + 1   # random production
+        for (j = 1; j &lt;= rhscnt[sym, i]; j++) # expand rhs's
+            gen(rhslist[sym, i, j])
+    } else {
+        gsub(/[A-Z]/," &",sym)
+        printf("%s ", sym) }
+}
+</PRE>
+<a name=11></a><H3> Storyp.awk</H3>
+<P>
+ Storyp.awk is almost the same as story.awk but it is assumed that each line ends in a number
+ that will bias how often that production gets selected.
+<pre>
+BEGIN {
+    srand(Seed ? Seed : 1) 
+    Grammar = Grammar ? Grammar : "grammar"
+    while ((getline &lt; Grammar) > 0)
+        if ($2 == "->") {
+            i = ++lhs[$1]              # count lhs
+            rhsprob[$1, i] = $NF       # 0 &lt;= probability &lt;= 1
+            rhscnt[$1, i] = NF-3       # how many in rhs
+            for (j = 3; j &lt; NF; j++)   # record them
+               rhslist[$1, i, j-2] = $j
+        } else
+            print "illegal production: " $0
+    for (sym in lhs)
+         for (i = 2; i &lt;= lhs[sym]; i++)
+            rhsprob[sym, i] += rhsprob[sym, i-1]
+}
+{   if ($1 in lhs) {  # nonterminal to expand
+         gen($1)
+         printf("\n")
+     } else 
+         print "unknown nonterminal: " $0   
+}
+function gen(sym,    i, j) {
+    if (sym in lhs) {       # a nonterminal
+        j = rand()          # random production
+        for (i = 1; i &lt;= lhs[sym] && j > rhsprob[sym, i]; i++) ;       
+        for (j = 1; j &lt;= rhscnt[sym, i]; j++) # expand rhs's
+            gen(rhslist[sym, i, j])
+    } else
+        printf("%s ", sym)
+}
+</pre>
+<a name=12></a><H2> Author</H2>
+<P>
+The code comes from 
+Alfred Aho, Brian  Kernighan, and Peter  Weinberger from the 
+ book "The AWK Programming Language",
+Addison-Wesley, 1988. 
+<P>
+The scifi grammar was written by Tim Menzies, 2009, and is based on 
+<a href="http://www.gahanwilson.com/moviegen11.htm">Gahan Wilson</a>'s sci-fi plot generator: 
+"The Science Fiction Horror Movie Pocket Computer" 
+( in "The Year's Best Science Fiction No. 5", edited by
+Harry Harrison and Brian Aldiss, Sphere, London, 1972).
+</div><!--- htmlbody --->

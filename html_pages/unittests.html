@@ -1,0 +1,48 @@
+<h1><join>Show Unit Tests</join></h1>
+<p>Ideally, all <a href="http://code.google.com/p/lawker/source/browse/">code in our code repository</a>
+comes with unit tests:
+<ul>
+<li>Either demo scripts to show off functionality
+<li>Or a regression suite that checks that new changes does not mess up existing code.
+</ul>
+<p>Accordingly  code offered to this site can contain unit tests, using the methods
+described in this page. 
+<p>
+But before going on, we stress that 
+awk.info  gratefully accepts
+awk contributions in any form. That is,  including unit tests with code is <em>optional</em>. 
+<h2>Files</h2>
+<p>If your code is in directory <em>yourcode</em> then create a sub-directory <em>yourcode/eg</em>
+<p>Write a test in a file <em>yourcode/eg/yourtest</em>. Divide that test into two parts:
+<ol>
+<li>In the first paragraph of that file, write any tedious set up required to get the system ready for the test.
+<li>In the second, third, etc paragraph, write the code that shows the test
+<li>
+For example, in the following code, the real test comes after some low-level environmental set up:
+<pre>
+# assumes
+# - the LAWKER trunk has been checked out and
+# - .bash_profile contains: export Lawker="$HOME/svns/lawker/fridge"
+. $Lawker/lib/bash/setup
+
+gawk -f join.awk --source '
+BEGIN { split("tim tom tam",a)
+        print join(a,2)
+}'
+</pre>
+</ol>
+<p>Write the expected output of that test case in <em>yourcode/eg/yourtest.out</em>
+<h2>Regression Tests</h2>
+<p>The above file conventions mean that  an automatic tool can run over the entire code base and perform a regression test (checking if all the tests generate
+all the <em>*.out</em> files.
+<h2>Displaying the Tests (and Output)</h2>
+<p>Another advantage of the above scheme is that you can use the tests to document your code.
+<p>To show the test case, add the following into your .awk file:
+<pre>
+ #.BODY       yourcode/eg/yourtest
+ #.CODE       yourcode/eg/yourtest.out
+</pre>
+<p>Then zip the directory <em>yourcode</em> (including <em>yourcode/eg</em>) and send it to <a href="mailto:mail@awk.info">awk.info</a>. Once
+we install those files on our site then
+when awk.info displays that file, the test case trivia is hidden and the users only see the essential details.
+For an example of this, see <a href="http://awk.info/?gawk/array/join.awk">http://awk.info/?gawk/array/join.awk</a>.
