@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Tic-Tac-Toe'
-tags: [ 'fun', 'working_example' ]
+tags: [ fun, working_example, posix ]
 ---
 
 ## Tic-Tac-Toe

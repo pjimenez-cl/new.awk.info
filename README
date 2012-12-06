@@ -68,6 +68,10 @@ working_example - has a working downloadable AWK example in the './lib/' directo
 anecdotal  - contains anecdotal stories, or history related to awk?
 productive - 'productive' examples? (such that can help you in your daily work)
 tutorial   - A tutorial (detailed examples / explanations)
+TODO       - More work is required on this post.
+posix      - The example is posix compliant
+gawk_extension - The example is not posix compliant
+dead_links - The post contains dead-links
 
 others? suggestions are welcomed.
 
