@@ -7,3 +7,6 @@ permalink: none
 # baseurl is required to make the site work locally (e.g. with file:///).
 # don't forget to prefix each URL with {{ site.baseurl }} .
 baseurl: .
+
+# No need to include these in the static website
+exclude: [ 'html_pages', 'README', 'Makefile' ]

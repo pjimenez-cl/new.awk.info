@@ -1,78 +1,13 @@
-<h1><join> Eliza</join></h1>
-<h2>Contents</h2>
-<div id="htmltoc">
-<h2><font color=black>&bull;</font></a> <a href=#1>Synopsis</a></h2>
-<h2><font color=black>&bull;</font></a> <a href=#2>Download</a></h2>
-<h2><font color=black>&bull;</font></a> <a href=#3>Description</a></h2>
-<h3><font color=black>&bull;</font></a> <a href=#4>Example dialogue</a></h3>
-<h2><font color=black>&bull;</font></a> <a href=#5>Code</a></h2>
-<h3><font color=black>&bull;</font></a> <a href=#6>Set up</a></h3>
-<h3><font color=black>&bull;</font></a> <a href=#7>ElizaSays</a></h3>
-<h3><font color=black>&bull;</font></a> <a href=#8>SetUpEliza</a></h3>
-<h2><font color=black>&bull;</font></a> <a href=#9>Author</a></h2>
-</div><!--- htmltoc --->
-<div id="htmlbody">
-<a name=1></a><H2> Synopsis</H2>
-<P> gawk -f eliza.awk</P>
-<a name=2></a><H2> Download</H2>
-<P> Download from <a href="http://lawker.googlecode.com/svn/fridge/lib/awk/eliza.awk">LAWKER</a>.</P>
-<a name=3></a><H2> Description</H2>
-<P>
-<EM> From Wikipedia:</EM>
-ELIZA was a computer program and an early example of (by modern standards) primitive natural language processing. ELIZA operated by processing users' responses to scripts, the most famous of which was DOCTOR, a simulation of a Rogerian psychotherapist. In this mode, ELIZA mostly rephrased the user's statements as questions and posed those to the 'patient.' ELIZA was written by Joseph Weizenbaum between 1964 to 1966.
-<a name=4></a><H3> Example dialogue</H3>
-<PRE>
-This is a Gawk implementation of the famous ELIZA program by Joseph Weizenbaum.
-To end, type SHUT UP
-
-HI, IM ELIZA, TELL ME YOUR PROBLEM
-I hate dogs
-CAN YOU ELABORATE ON THAT ?
-Dogs remind me of Mylie Cyrus
-CAN YOU ELABORATE ON THAT ?
-You're kidding, right? Mylie Cyrus is one of the biggest stars on the planet
-WHAT MAKES YOU THINK I AM KIDDING, RIGHT? MYLIE CYRUS IS ONE OF THE BIGGEST STARS ON THE PLANET ?
-Cause you did not know about Mylie
-WE WERE DISCUSSING YOU -- NOT ME
-No,  I was discussing Mylie
-Oh, I ID NOT KNOW ABOUT MYLIE
-Well aren't you stupid
-Oh, I TUPID
-can you get her number?
-WE WERE DISCUSSING YOU -- NOT ME
-sorry
-PLEASE DON'T APOLOGIZE !
-but you sound so angry
-YOU'RE NOT REALLY TALKING ABOUT ME, ARE YOU ?
-i think you are  a robot
-Oh, I RE  A ROBOT
-yes
-I UNDERSTAND
-no you don't
-YOU'RE NOT REALLY TALKING ABOUT ME, ARE YOU ?
-hey- is this eliza?
-WHAT'S ABOUT ME ?
-I want to take you to dinner
-YOU'RE NOT REALLY TALKING ABOUT ME, ARE YOU ?
-I feel you are really stupid
-WE WERE DISCUSSING YOU -- NOT ME
-SHUT UP
-WELL, PLEASE PAY YOUR BILL. ITS EXACTLY ... $101
-</PRE>
-<a name=5></a><H2> Code</H2>
-<a name=6></a><H3> Set up</H3>
-<PRE>
 BEGIN {
-	SetUpEliza() 
+	SetUpEliza()
 	print "This is a Gawk implementation of the "\
           "famous ELIZA program by Joseph Weizenbaum. "\
 	      "To end, type SHUT UP\n";
 	print ElizaSays("");
 }
+
 { print ElizaSays($0) }
-</PRE>
-<a name=7></a><H3> ElizaSays</H3>
-<PRE>
+
 function ElizaSays(YouSay) {
  if (YouSay == "") {
    cost = 0
@@ -116,9 +51,7 @@ function ElizaSays(YouSay) {
  cost += length(answer) # for later payment : 1 cent per character
  return answer
 }
-</PRE>
-<a name=8></a><H3> SetUpEliza</H3>
-<PRE>
+
 function SetUpEliza() {
  srand()
  wold = "-"
@@ -298,7 +231,3 @@ function SetUpEliza() {
  k["MONEY"]        = "113 114 115"
  k["ELIZA"]        = "116 117 118"
 }
-</PRE>
-<a name=9></a><H2> Author</H2>
-<P> Juergen Kahrs</P>
-</div><!--- htmlbody --->

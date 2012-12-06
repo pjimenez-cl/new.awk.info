@@ -1,4 +1,86 @@
-NOTES:
+awk.info web-site restructuring
+===============================
+
+Directory Structure
+===================
+
+ _posts/      - awk.info 'pages', after conversion to markdown
+                Jekyll will compile those into posts.
+
+ _config.yml  - Jekyll configuration, more options:
+                https://github.com/mojombo/jekyll/wiki/Configuration
+
+ _layout/     - Jekyll layout files (html)
+
+ css          - Custom CSS files for the website.
+                referenced by files in '_layout'.
+
+ html_pages   - Original (not modified) HTML pages from awk.info.
+                Eventually, all files will be converted to markdown
+                and moved to '_posts/'
+
+ lib          - Containing downloadable AWK scripts,
+                referenced from files in '_posts/' .
+                Originally from https://code.google.com/p/lawker/source/browse/fridge/lib/
+
+                See: ./_posts/1979-01-01-eliza.md
+                and  ./lib/awk/eliza.awk
+
+ Makefile     - Convenience trick to build website with 'make'
+
+ README       - This file.
+
+ _site/*      - Contains the compiled static HTML site.
+                Will be generated when running 'make'.
+
+
+Converting HTML Pages to Markdown Posts
+=======================================
+
+1. Grab a file from './html_pages/'
+2. Create a corresponding file in './_posts/' .
+    1. The filename MUST be: `YYYY-MM-DD-some_text.md` .
+       This is a Jekyll constraint.
+       I use 1979-01-01 for unknown dates.
+    2. The file MUST start with YAML-front-Matter
+       (https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter)
+       Otherwise it will not be processed properly.
+    3. Convert the HTML content to Markdown.
+       WARNING: automatic conversion with PANDOC sometimes misses stuff.
+    4. If needed, add corresponding AWK files in './lib/awk'.
+3. Compile the website (run `make`).
+4. Test the new post (the `index.html` page contains links to all pages).
+5. Delete the old HTML page
+6. Commit changes to git hub.
+
+
+TAGS
+====
+
+Perhaps agree upon list of TAGS (included in the YAML front-matter in each
+post file) to represent content?
+
+fun - 'fun' (as opposed to 'productive') content
+working_example - has a working downloadable AWK example in the './lib/' directory.
+                  (after testing that it works in recent GAWK).
+anecdotal  - contains anecdotal stories, or history related to awk?
+productive - 'productive' examples? (such that can help you in your daily work)
+tutorial   - A tutorial (detailed examples / explanations)
+
+others? suggestions are welcomed.
+
+
+Javascript/CSS
+==============
+
+For minimum effort and maximum results, I added CDN'd JQuery and Bootstrap
+(included in `_layout/default.html`) . In the final website, we can change those
+to whatever is needed.
+
+
+
+Useful links
+============
 
 Jekyll Introduction:
  http://jekyllbootstrap.com/lessons/jekyll-introduction.html
@@ -10,6 +92,8 @@ Liquid Template System (=commands usable in templates):
  full docs: http://wiki.shopify.com/UsingLiquid
  quick ref: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
 
+Markdown syntax:
+ http://en.wikipedia.org/wiki/Markdown
 
 To re-build the static website, run 'jekyll' or 'make' .
 
