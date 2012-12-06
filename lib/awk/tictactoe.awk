@@ -1,37 +1,3 @@
-<h1><join> Tic-Tac-Toe</join></h1>
-<h2>Contents</h2>
-<div id="htmltoc">
-<h2><font color=black>&bull;</font></a> <a href=#1>Synopsis</a></h2>
-<h2><font color=black>&bull;</font></a> <a href=#2>Description</a></h2>
-<h3><font color=black>&bull;</font></a> <a href=#3>Example</a></h3>
-<h2><font color=black>&bull;</font></a> <a href=#4>Code:</a></h2>
-<h2><font color=black>&bull;</font></a> <a href=#5>Author</a></h2>
-</div><!--- htmltoc --->
-<div id="htmlbody">
-<a name=1></a><H2> Synopsis</H2>
-<P> To let the computer play first, run:</P>
-<PRE>
-awk -f 15.awk -v start=1
-</PRE>
-<P> To play first, run:</P>
-<PRE>
-awk -f 15.awk -v start=2
-</PRE>
-<a name=2></a><H2> Description</H2>
-<P>
-Each move is one square (in the range 1..9).
-<a name=3></a><H3> Example</H3>
-<PRE>
- gawk -f 15.awk -v start=1
-6
-9
-1
-3
-8
-I win!
-</PRE>
-<a name=4></a><H2> Code:</H2>
-<PRE>
 BEGIN {
     winning_sum = 15;
     max_play = 9;
@@ -68,11 +34,11 @@ BEGIN {
 	    answer = block = winning_sum - your_sum;
 	    winning_move = ftw(used, my_sum);
             if (block > max_play \
-		|| block &lt;= 0 \
+		|| block <= 0 \
 		|| block in used) {
                 answer = winning_move;
 	    }
-	    while (answer &lt;= 0 || answer > max_play || answer in used) {
+	    while (answer <= 0 || answer > max_play || answer in used) {
 		answer++;
 	    }
             my_sum += answer;
@@ -115,7 +81,7 @@ function try(used, hunches, sum) {
     next_hunch = curr_hunch - 1;
     if (hunches == "") {
         return "";
-    } else if (curr_hunch &lt; 1) {
+    } else if (curr_hunch < 1) {
         return substr(hunches, 2);
     } else if (index(used, curr_hunch) || curr_sum > winning_sum) {
         return try(used, next_hunch "" substr(hunches, 2), sum);
@@ -128,12 +94,8 @@ function try(used, hunches, sum) {
 function strsum(str) {
     s = 0;
     str_length = length(str);
-    for (i = 1; i &lt;= str_length; i++) {
+    for (i = 1; i <= str_length; i++) {
         s += substr(str, i, 1);
     }
     return s;
 }
-</PRE>
-<a name=5></a><H2> Author</H2>
-<P> Aaron S. Hawley</P>
-</div><!--- htmlbody --->
