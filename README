@@ -12,6 +12,8 @@ Directory Structure
 
  _layout/     - Jekyll layout files (html)
 
+ _plugins/    - Ruby/Jekyll plugins
+
  css          - Custom CSS files for the website.
                 referenced by files in '_layout'.
 
@@ -68,6 +70,26 @@ productive - 'productive' examples? (such that can help you in your daily work)
 tutorial   - A tutorial (detailed examples / explanations)
 
 others? suggestions are welcomed.
+
+
+Including Examples in Posts
+===========================
+
+1. Store (hopefully a fully functioning) example file in ./lib/awk/XXX.awk
+2. Use the 'insert_example' tag to include the example in the post.
+   This saves the need to copy&paste the example code.
+3. To add syntax-highlighting, put:
+     {% highlight awk %}
+     {% insert_example lib/awk/99_bottles_weske.awk %}
+     {% endhighlight %}
+
+4. Add a link to download the example file:
+    (Download [99_bottles_weske.awk]({{site.baseurl}}/lib/awk/99_bottles_weske.awk))
+
+5. Uses the './_plugins/insert_example.rb' plug-in.
+   (Note: plugins won't work in github pages, only on locally run Jekylls).
+
+6. See `_post/1979-01-01-99_bottles.md` for a working example.
 
 
 Javascript/CSS
