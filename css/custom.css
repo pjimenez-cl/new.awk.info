@@ -6,5 +6,28 @@ table.posts thead tr th {
 
 table.posts tbody tr td {
 	padding-right: 30px;
+	text-wrap: none;
+	white-space:nowrap;
 }
 
+
+
+
+/* Eiso Ab's list of chemical AWK programs .
+   HTML table is in _posts/1979-01-01-chem.md .
+
+   Disable text-wrapping on all columns,
+   except the third (last) one.
+ */
+table.eiso tr td {
+	text-wrap: none;
+	padding-left: 10px;
+	overflow: hidden;
+	white-space:nowrap;
+	text-align: left;
+}
+
+table.eiso tr td +td +td {
+	text-wrap: normal;
+	white-space: normal;
+}
