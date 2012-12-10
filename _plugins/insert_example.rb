@@ -28,8 +28,17 @@ module Jekyll
 
 		def render(context)
 			begin
-				text = File.read(@filename);
-				text
+				result = ""
+				file = File.new(@filename);
+				while (line = file.gets)
+					line = line.chomp
+					# The magic marker at the end of AWK examples
+					# don't include the comments following this line
+					# in the Jekyll generated page.
+					break if line == "## awk.info:"
+					result = result + line + "\n"
+				end
+				result
 			rescue => err
 				"Insert_Example Error: failed to " \
 				     "find example file '#{@filename}': #{err}"
