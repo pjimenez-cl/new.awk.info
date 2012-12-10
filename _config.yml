@@ -9,4 +9,4 @@ permalink: none
 baseurl: .
 
 # No need to include these in the static website
-exclude: [ 'html_pages', 'README', 'Makefile' ]
+exclude: [ 'html_pages', 'README', 'Makefile', 'bin' ]
