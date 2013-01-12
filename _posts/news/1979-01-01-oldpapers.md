@@ -1,8 +1,13 @@
-<h1><join>Gawk 3.1.8: ready (nearly)</join></h1>
+---
+layout: default
+title: "Gawk 3.1.8: ready (nearly)"
+tags: [gawk]
+---
 
+Gawk 3.1.8: ready (nearly)
+==========================
 
-<p>Attached, with permission from Brian Kernighan, are two items of
-interest.
+Attached, with permission from Brian Kernighan, are two items of interest.
 
 The first is a reconstituted version of the "Software: Practice and
 Experience" paper on Awk published in 1979.  The second is a scan of
