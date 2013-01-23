@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Parallel Awk
-tags: [mpi, external_links, dead_links, TODO]
+tags: [mpi, external_links, dead_links, news]
 ---
 
 Parallel Awk
 ============
 
-_From John David Duncan's [parallel-awk.org][link01] site._
+_From John David Duncan's [parallel-awk.org][1] site._
 
 Parallel Awk is an effort to link Awk with MPI, enabling the everyday
 analysis of large plain-text files to be parallelized, allowing rapid
@@ -44,6 +44,8 @@ Example: Calculating Pi
 {% insert_example lib/awk/parallelAwk_pi.awk %}
 {% endhighlight %}
 
+(Download [parallelAwk_pi.awk]({{site.baseurl}}/lib/awk/parallelAwk_pi.awk))
+
 pi.awk requires about 20% as many lines of code as its equivalents in
 C or Fortran.  The output is printed by the process with RANK = 0 and
 looks like this:
@@ -66,4 +68,4 @@ function called assign() is used to divide the lines of input among the
 set of processes, as can a hash() function that is applied to array keys
 or other strings.
 
-[link01]: http://parallel-awk.org
+[1]: http://parallel-awk.org

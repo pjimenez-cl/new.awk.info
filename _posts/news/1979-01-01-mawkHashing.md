@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Faster Hashing in Mawk
-tags: [mawk, hashing, external_links, TODO]
+tags: [mawk, hashing, external_links, news]
 ---
 
 Faster Hashing in Mawk
 ======================
 
-_J. Mellander reports in [comp.lang.awk][00] how to make Mawk's hashing
+_J. Mellander reports in [comp.lang.awk][1] how to make Mawk's hashing
 run 20+ times faster._
 
 Recently, for a project, I had the occasion to use mawk - I have a list
@@ -88,4 +88,4 @@ STRING* sval ;
 }
 {% endhighlight %}
 
-[00]: http://groups.google.com/group/comp.lang.awk/browse_thread/thread/0b9e369234f79bbe#
+[1]: http://groups.google.com/group/comp.lang.awk/browse_thread/thread/0b9e369234f79bbe#

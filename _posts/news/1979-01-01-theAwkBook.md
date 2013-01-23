@@ -1,7 +1,7 @@
 ---
 layout: default
 title: The Awk Book's Code
-tags: [code, external_links, TODO]
+tags: [code, external_links, news]
 ---
 
 The Awk Book's Code
@@ -15,6 +15,6 @@ from the original Awk book:
 + Addison-Wesley, 1988.
 + ISBN 0-201-07981-X. 
 
-The code can be viewed [here][lawker01].
+The code can be viewed [here][1].
 
-[lawker01]: http://lawker.googlecode.com/svn/fridge/lib/awk/theAwkBook
+[1]: http://lawker.googlecode.com/svn/fridge/lib/awk/theAwkBook

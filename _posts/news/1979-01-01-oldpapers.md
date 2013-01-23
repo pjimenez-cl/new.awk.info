@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Gawk 3.1.8: ready (nearly)"
-tags: [gawk, announce]
+tags: [gawk, announce, news]
 ---
 
 Gawk 3.1.8: ready (nearly)

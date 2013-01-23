@@ -1,7 +1,7 @@
 ---
 layout: default
 title: A new Mascot for Awk
-tags: [japanese, mascot, image, external_links, TODO]
+tags: [japanese, mascot, image, external_links, news]
 ---
 
 A new Mascot for Awk
@@ -10,4 +10,5 @@ A new Mascot for Awk
 Hirofumi Saito contributes a candidate Awk mascot from the
 <http://gauc.no-ip.org/> Japan GNU AWK Users Club.
 
-![Japanese mascot](http://lawker.googlecode.com/svn/fridge/share/img/japanawk.jpg)
+![Japanese mascot][1]
+[1]: http://lawker.googlecode.com/svn/fridge/share/img/japanawk.jpg

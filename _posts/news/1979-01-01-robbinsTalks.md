@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Interview with Aharon Robbins
-tags: [robbins, aharon robbins, gawk, TODO]
+tags: [robbins, aharon robbins, gawk, news]
 ---
 
 Interview with Aharon Robbins

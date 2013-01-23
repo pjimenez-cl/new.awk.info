@@ -1,13 +1,13 @@
 ---
 layout: default
 title: "Mawk: faster than C, C++, Java, Perl, Ruby,..."
-tags: [mawk, benchmark, big_data, TODO]
+tags: [mawk, benchmark, big_data, news]
 ---
 
 Mawk: faster than C, C++, Java, Perl, Ruby,...
 ==============================================
 
-Brendan O'Conner writes in [his blog][link01]:
+Brendan O'Conner writes in [his blog][1]:
 
 > When one of these new fangled 'Big Data' sets comes your way, the
 > very first thing you have to do is data munging: shuffling around file
@@ -43,8 +43,8 @@ Brendan O'Conner writes in [his blog][link01]:
 > fast-but-hard compiled languages.
 >
 > All the code, results, and data can be obtained at
-> [github.com/brendano/awkspeed][link02]. I'd love to see results for
-> more languages.
+> [github.com/brendano/awkspeed][2]. I'd love to see results for more
+> languages.
 
 Editor's note: one reply to this blog entry, by Eric Young, optimized
 Brendan's Ruby solution  and re-ran all the tests. Eric reported the
@@ -65,5 +65,5 @@ faster than everything else.
 	327.6s     ruby1.8
 	372.9s     ruby1.9
 
-[link01]: http://anyall.org/blog/2009/09/dont-mawk-awk-the-fastest-and-most-elegant-big-data-munging-language/
-[link02]: http://github.com/brendano/awkspeed
+[1]: http://anyall.org/blog/2009/09/dont-mawk-awk-the-fastest-and-most-elegant-big-data-munging-language/
+[2]: http://github.com/brendano/awkspeed

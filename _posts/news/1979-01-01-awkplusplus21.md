@@ -1,7 +1,7 @@
 ---
 layout: default
 title: New Version of Awk++
-tags: [awk++, announce]
+tags: [awk++, announce, news]
 ---
 
 New Version of Awk++
