@@ -1,13 +1,14 @@
 ---
 layout: default
 title: Parallel Awk
-tags: [mpi, external_links, dead_links, news]
+tags: [mpi, external_links, dead_links, news, TODO]
 ---
 
 Parallel Awk
 ============
 
-_From John David Duncan's [parallel-awk.org][1] site._
+_From John David Duncan's **(TODO: dead link)** [parallel-awk.org][1]
+site._
 
 Parallel Awk is an effort to link Awk with MPI, enabling the everyday
 analysis of large plain-text files to be parallelized, allowing rapid
