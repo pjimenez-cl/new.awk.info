@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Teaching Awk
-tags: [teaching, TODO]
+tags: [teaching]
 ---
 
 Teaching Awk
