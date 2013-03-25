@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Fun with "cal"'
-tags: [tip, cal]
+tags: [tip, cal, external_links]
 ---
 
 # {{ page.title }}
