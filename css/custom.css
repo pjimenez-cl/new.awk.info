@@ -31,3 +31,7 @@ table.eiso tr td +td +td {
 	text-wrap: normal;
 	white-space: normal;
 }
+
+ol.lower-alpha {
+	list-style-type: lower-alpha;
+}
