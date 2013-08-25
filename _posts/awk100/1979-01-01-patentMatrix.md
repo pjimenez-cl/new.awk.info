@@ -2,6 +2,7 @@
 layout: default
 title: "PatentMatrix: survey gene/protein patents"
 tags: [awk100, patents]
+permalink: /awk100/patentMatrix.html
 ---
 
 # {{ page.title }}

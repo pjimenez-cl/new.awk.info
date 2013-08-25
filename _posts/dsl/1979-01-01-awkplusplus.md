@@ -2,6 +2,7 @@
 layout: default
 title: "Awk++"
 tags: [dsl, gawk, awk++]
+permalink: /dsl/awkplusplus.html
 ---
 
 # {{ page.title }}

@@ -2,6 +2,7 @@
 layout: default
 title: "Mawk: faster than C, C++, Java, Perl, Ruby,..."
 tags: [mawk, benchmark, big_data, news]
+permalink: /news/mawkIsFast.html
 ---
 
 Mawk: faster than C, C++, Java, Perl, Ruby,...

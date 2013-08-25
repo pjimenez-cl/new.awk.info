@@ -2,6 +2,7 @@
 layout: default
 title: "Shorten Your Pipes"
 tags: [tip, pipes, external_links]
+permalink: /tip/shortenMyPipes.html
 ---
 
 # {{ page.title }}

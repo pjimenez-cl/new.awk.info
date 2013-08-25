@@ -2,6 +2,7 @@
 layout: default
 title: New Version of Awk++
 tags: [awk++, announce, news]
+permalink: /news/awkplusplus21.html
 ---
 
 New Version of Awk++

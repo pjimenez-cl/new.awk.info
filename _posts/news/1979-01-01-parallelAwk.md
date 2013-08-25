@@ -2,6 +2,7 @@
 layout: default
 title: Parallel Awk
 tags: [mpi, external_links, dead_links, news, TODO]
+permalink: /news/parallelAwk.html
 ---
 
 Parallel Awk

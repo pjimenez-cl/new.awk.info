@@ -2,6 +2,7 @@
 layout: default
 title: "The Secret WHINY_USERS Flag"
 tags: [tip, WHINY_USERS]
+permalink: /tip/whinyUsers.html
 ---
 
 # {{ page.title }}

@@ -2,6 +2,7 @@
 layout: default
 title: A new Mascot for Awk
 tags: [japanese, mascot, image, external_links, news]
+permalink: /news/japanesemascot.html
 ---
 
 A new Mascot for Awk

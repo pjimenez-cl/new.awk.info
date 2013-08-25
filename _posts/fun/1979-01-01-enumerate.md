@@ -2,6 +2,7 @@
 layout: default
 title: "Functional Enumeration in Gawk 3.1.7"
 tags: [functional, gawk, enumeration]
+permalink: /fun/enumerate.html
 ---
 
 # {{ page.title }}

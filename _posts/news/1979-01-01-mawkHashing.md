@@ -2,6 +2,7 @@
 layout: default
 title: Faster Hashing in Mawk
 tags: [mawk, hashing, external_links, news]
+permalink: /news/mawkHashing.html
 ---
 
 Faster Hashing in Mawk

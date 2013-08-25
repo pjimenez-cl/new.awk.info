@@ -2,6 +2,7 @@
 layout: default
 title: "SysAdmins: Awk is Your Friend"
 tags: [tip, sysadmin, external_links]
+permalink: /tip/sysAdminInAwk.html
 ---
 
 # {{ page.title }}

@@ -2,6 +2,7 @@
 layout: default
 title: Interview with Aharon Robbins
 tags: [robbins, aharon robbins, gawk, news]
+permalink: /news/robbinsTalks.html
 ---
 
 Interview with Aharon Robbins

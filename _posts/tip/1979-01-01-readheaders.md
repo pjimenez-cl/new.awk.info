@@ -2,6 +2,7 @@
 layout: default
 title: "Using Field Names to Reference Columns"
 tags: [tip, gawk, csv]
+permalink: /tip/readheaders.html
 ---
 
 # {{ page.title }}

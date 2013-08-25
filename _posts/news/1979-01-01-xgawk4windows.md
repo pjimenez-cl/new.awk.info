@@ -2,6 +2,7 @@
 layout: default
 title: Xgawk on Windows
 tags: [Windows, xgawk, external_links, dead_links, news, TODO]
+permalink: /news/xgawk4windows.html
 ---
 
 Xgawk on Windows

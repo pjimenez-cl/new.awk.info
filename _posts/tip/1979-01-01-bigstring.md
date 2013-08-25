@@ -2,6 +2,7 @@
 layout: default
 title: " Very, Very, Very Long Strings in Gawk"
 tags: [tip, strings, gawk, external_links]
+permalink: /tip/bigstring.html
 ---
 
 # {{ page.title }}

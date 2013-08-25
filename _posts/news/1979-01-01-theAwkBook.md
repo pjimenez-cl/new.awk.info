@@ -2,6 +2,7 @@
 layout: default
 title: The Awk Book's Code
 tags: [code, external_links, news]
+permalink: /news/theAwkBook.html
 ---
 
 The Awk Book's Code

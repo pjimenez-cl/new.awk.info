@@ -2,6 +2,7 @@
 layout: default
 title: "Gawk 3.1.8: ready (nearly)"
 tags: [gawk, announce, news]
+permalink: /news/oldpapers.html
 ---
 
 Gawk 3.1.8: ready (nearly)

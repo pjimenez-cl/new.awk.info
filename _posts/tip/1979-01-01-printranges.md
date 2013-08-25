@@ -2,6 +2,7 @@
 layout: default
 title: "Print Ranges"
 tags: [tip, ranges]
+permalink: /tip/printranges.html
 ---
 
 # {{ page.title }}

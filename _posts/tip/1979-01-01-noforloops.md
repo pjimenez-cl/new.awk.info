@@ -2,6 +2,7 @@
 layout: default
 title: "Never write for(i=1;i<=n;i++)... again?"
 tags: [tip, for, loop, external_links]
+permalink: /tip/noforloops.html
 ---
 
 # {{ page.title }}
